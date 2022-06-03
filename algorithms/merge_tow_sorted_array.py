@@ -4,9 +4,9 @@ import sys
 def get_minimum_number(array_indices: dict, arrays: list):
     min_number = 100001
     for array_idx, number_idx in array_indices.items():
-        if array_indices[array_idx] >= len(arrays[array_idx]):
+        if number_idx >= len(arrays[array_idx]):
             continue
-        
+        print(array_idx, array_indices[array_idx])
         number = int(arrays[array_idx][number_idx])
         if number < min_number:
             min_number = number

@@ -52,17 +52,6 @@ def build_graph(n_nodes, edges):
             group_elements[group_max_idx] = {node}
     
     return group_elements
-        
-
-def depth_first_search(node, graph):
-    searched_nodes = list()
-    searched_nodes.append(node)
-    
-    for child_node in graph[node]:
-        child_graph = depth_first_search(child_node, graph)
-        searched_nodes.extend(child_graph)
-        
-    return searched_nodes
     
     
 def main():

@@ -48,6 +48,7 @@ def main():
 
     read_count = dict()
     read_appear_once = set()
+    correct_reads = set()
     for read in all_reads.values():
         reverse_complement_read = make_reverse_complementary_sequence(read)
         
@@ -59,12 +60,14 @@ def main():
         elif read_count[read] == 1:
             read_appear_once.discard(read)
             read_appear_once.discard(reverse_complement_read)
+            correct_reads.add(read)
+            correct_reads.add(reverse_complement_read)
         
         read_count[read] += 1
         read_count[reverse_complement_read] += 1
     
     for read in read_appear_once:
-        corrected_read = get_hamming_distance_is_one(read, read_count.keys())
+        corrected_read = get_hamming_distance_is_one(read, correct_reads)
         sys.stdout.write(f"{read}->{corrected_read}\n")
         
         
